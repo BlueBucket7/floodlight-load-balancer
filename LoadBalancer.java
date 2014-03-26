@@ -239,15 +239,8 @@ public class LoadBalancer implements IFloodlightModule,
                     LBPool pool = pools.get(vip.pickPool(client));                    
 
                     
-                    
-//                    LBMember member = members.get(pool.pickMember(client)); //COMMENTED
-                                        
-//                    if (!pool.dynamic) {
-//                    	//static load balance
-//                    	LBMember member = members.get(pool.pickMember(client));
-//                    } 
-//                    LBMember member = members.get(pool.pickMemberDynamically(client)); //default
-                    
+           
+                    //Case statements for different load balancing options. Default case is round robin
                     LBMember member;
                     switch (pool.lbMethod) {
 	                    case 1: {
@@ -256,7 +249,7 @@ public class LoadBalancer implements IFloodlightModule,
 	                    	break;
 	                    } case 2: {
 	                    	//dynamic load balance. Weighted round robin
-	                    	member = members.get(pool.pickMemberDynamically(client));
+	                    	member = members.get(pool.pickMemberDynamically(client, pool));
 	                    	break;
 	                    } default: {
 	                    	member = members.get(pool.pickMember(client));

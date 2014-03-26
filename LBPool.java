@@ -78,7 +78,7 @@ public class LBPool {
         }
     }
     
-    public String pickMemberDynamically(IPClient client) {
+    public String pickMemberDynamically(IPClient client, LBPool pool) {
     	
     	//Add logic 
     	return null;
