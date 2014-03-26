@@ -47,6 +47,10 @@ public class LBPool {
     
     protected int previousMemberIndex;
     
+    //NEW
+    protected boolean dynamic;
+    //END
+    
     public LBPool() {
         id = String.valueOf((int) (Math.random()*10000));
         name = null;
@@ -59,16 +63,27 @@ public class LBPool {
         adminState = 0;
         status = 0;
         previousMemberIndex = -1;
+        
+        //NEW
+        dynamic = false;
+        //END
     }
     
     public String pickMember(IPClient client) {
         // simple round robin for now; add different lbmethod later
+    	
         if (members.size() > 0) {
             previousMemberIndex = (previousMemberIndex + 1) % members.size();
             return members.get(previousMemberIndex);
         } else {
             return null;
         }
+    }
+    
+    public String pickMemberDynamically(IPClient client) {
+    	
+    	
+    	return null;
     }
 
 }

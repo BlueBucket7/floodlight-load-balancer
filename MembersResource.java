@@ -138,6 +138,16 @@ public class MembersResource extends ServerResource {
                 continue;
             } 
             
+            //NEW
+            else 
+            if (n.equals("weight")) {
+            	member.weight = Integer.parseInt(jp.getText());
+            } //else
+//            if (n.equals("dynamic")) {
+//            	member.dynamic = Boolean.parseBoolean(jp.getText());
+//            }
+            //END
+            
             log.warn("Unrecognized field {} in " +
                     "parsing Members", 
                     jp.getText());

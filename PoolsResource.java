@@ -147,6 +147,12 @@ public class PoolsResource extends ServerResource {
                 continue;
             } 
             
+            //NEW
+            if (n.equals("dynamic")) {
+            	pool.dynamic = Boolean.parseBoolean(jp.getText());
+            }
+            //END
+            
             log.warn("Unrecognized field {} in " +
                     "parsing Pools", 
                     jp.getText());

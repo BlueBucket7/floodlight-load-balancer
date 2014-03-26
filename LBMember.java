@@ -39,6 +39,11 @@ public class LBMember {
     protected String poolId;
     protected String vipId;
     
+    //NEW
+    protected int weight;
+    protected boolean dynamic;
+    //END
+    
     public LBMember() {
         id = String.valueOf((int) (Math.random()*10000));
         address = 0;
@@ -50,5 +55,10 @@ public class LBMember {
         status = 0;
         poolId = null;
         vipId = null;
+        
+        //NEW
+        weight  = 0;
+        dynamic = false;
+        //END
     }
 }
