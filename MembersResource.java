@@ -77,7 +77,7 @@ public class MembersResource extends ServerResource {
         
         String memberId = (String) getRequestAttributes().get("member");
                
-        ILoadBalancerService lbs =
+        ILoadBalancerService lbs = 
                 (ILoadBalancerService)getContext().getAttributes().
                     get(ILoadBalancerService.class.getCanonicalName());
 
@@ -136,17 +136,14 @@ public class MembersResource extends ServerResource {
             if (n.equals("pool_id")) {
                 member.poolId = jp.getText();
                 continue;
-            } 
-            
-            //NEW
-            else 
+            } else 
             if (n.equals("weight")) {
             	member.weight = Integer.parseInt(jp.getText());
             } //else
 //            if (n.equals("dynamic")) {
 //            	member.dynamic = Boolean.parseBoolean(jp.getText());
 //            }
-            //END
+          
             
             log.warn("Unrecognized field {} in " +
                     "parsing Members", 

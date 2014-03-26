@@ -238,16 +238,12 @@ public class LoadBalancer implements IFloodlightModule,
                     LBVip vip = vips.get(vipIpToId.get(destIpAddress));
                     LBPool pool = pools.get(vip.pickPool(client));                    
                     //LBMember member = members.get(pool.pickMember(client)); //COMMENTED
-                    
-                    //NEW
-                    //Should add numbered load balance options later
+                                        
                     if (!pool.dynamic) {
                     	//static load balance
                     	LBMember member = members.get(pool.pickMember(client));
                     } 
                     LBMember member = members.get(pool.pickMemberDynamically(client)); //default
-                    
-                    //END
 
                     // for chosen member, check device manager and find and push routes, in both directions                    
                     pushBidirectionalVipRoutes(sw, pi, cntx, client, member);

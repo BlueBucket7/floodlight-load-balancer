@@ -145,13 +145,11 @@ public class PoolsResource extends ServerResource {
             if (n.equals("vip_id")) {
                 pool.vipId = jp.getText();
                 continue;
-            } 
-            
-            //NEW
+            }            
             if (n.equals("dynamic")) {
             	pool.dynamic = Boolean.parseBoolean(jp.getText());
             }
-            //END
+           
             
             log.warn("Unrecognized field {} in " +
                     "parsing Pools", 

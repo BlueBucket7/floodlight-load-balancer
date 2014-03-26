@@ -45,11 +45,9 @@ public class LBPool {
     
     protected String vipId;
     
-    protected int previousMemberIndex;
+    protected int previousMemberIndex;    
     
-    //NEW
-    protected boolean dynamic;
-    //END
+    protected boolean dynamic;    
     
     public LBPool() {
         id = String.valueOf((int) (Math.random()*10000));
@@ -82,7 +80,7 @@ public class LBPool {
     
     public String pickMemberDynamically(IPClient client) {
     	
-    	
+    	//Add logic 
     	return null;
     }
 
