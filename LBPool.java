@@ -17,6 +17,7 @@
 package net.floodlightcontroller.loadbalancer;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -78,10 +79,37 @@ public class LBPool {
         }
     }
     
-    public String pickMemberDynamically(IPClient client, LBPool pool) {
+    public String pickMemberDynamically(IPClient client, ArrayList<Integer> weights) {
     	
-    	//Add logic 
-    	return null;
+    	//At this point, its guaranteed that members is bigger than 0 and the total of all member weights in the pool equals to 10.    	
+    	boolean recall = true;
+    	int selection = 0;
+    	
+    	for (int i=0; i<weights.size(); i++) {
+    		if (new Random().nextInt(10) <= (weights.get(i)-1) ) {
+    			selection = i;
+    			recall = false;
+    			break;
+    		}
+    	}    	
+    	
+    	if (recall) {
+    		return pickMemberDynamically(client, weights);
+    	} else {
+    		return members.get(selection);
+    	}   	
+    }
+    
+    public boolean checkWeightDist (ArrayList<Integer> weights) {
+    	int totalWeight = 0;
+    	for (int i=0; i<weights.size(); i++) {
+    		totalWeight += weights.get(i);
+    	}
+    	
+    	if (totalWeight == 10)
+    		return true;
+    	
+		return false;
     }
 
 }

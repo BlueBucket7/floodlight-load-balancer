@@ -249,7 +249,19 @@ public class LoadBalancer implements IFloodlightModule,
 	                    	break;
 	                    } case 2: {
 	                    	//dynamic load balance. Weighted round robin
-	                    	member = members.get(pool.pickMemberDynamically(client, pool));
+	                    	int index = 0;
+	                    	ArrayList<Integer> weightList = new ArrayList<Integer>();
+	                    	while (members.get(pool.members.get(index)) != null){
+	                    		weightList.add(members.get(pool.members.get(index)).weight);
+	                    	}
+	                    	//Check if the weights are correctly allocated before dynamic LB
+	                    	boolean DL = pool.checkWeightDist(weightList);
+	                    	if (DL) {
+	                    		member = members.get(pool.pickMemberDynamically(client, weightList));
+	                    	} else {
+	                    		System.out.print("Invalid member weight distributions. Resorted to static loadbalancing.");
+	                    		member = members.get(pool.pickMember(client));
+	                    	}
 	                    	break;
 	                    } default: {
 	                    	member = members.get(pool.pickMember(client));
