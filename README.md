@@ -7,7 +7,7 @@ package: net.floodlightcontroller.loadbalancer
 SUMMARY:
 
 This branch will serve as milestone 1. Dynamic load balncing functionality and related frameworks complete.
-
+------------------------------------------------------------------------------------------------------------
 
 FUNCTIONALITIES:
 
