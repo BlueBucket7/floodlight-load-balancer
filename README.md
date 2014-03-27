@@ -24,5 +24,6 @@ QUESTIONS/CONCERNS (please add and commit to this section if you have answers):
 
 
 BRIEF LOOK AT MILESTONE 2:
+
   Milestone 2 will enable load balancing for different protocols. Proposed protocols are: UDP, TCP, and DHCP.
 
