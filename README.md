@@ -12,6 +12,7 @@ FUNCTIONALITIES:
   2. Deletion of member enabled
   3. Dynamic load balnciing enabled. Weighted round robin algorithm applied using recursion.
   4. Loadbalacing options provided. No longer defaults to round robin. Framework now takes a loadbalancing method as a   parameter.
+  5. Supporting class fields added to support dynamic LB.
 
 
 TO DO:
