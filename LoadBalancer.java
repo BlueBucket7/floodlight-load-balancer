@@ -251,6 +251,10 @@ public class LoadBalancer implements IFloodlightModule,
 	                    	//dynamic load balance. Weighted round robin
 	                    	int index = 0;
 	                    	ArrayList<Integer> weightList = new ArrayList<Integer>();
+	                    	if (!pool.members.isEmpty()){
+	                    		System.out.print("Not null!");
+	                    	}
+	                    	
 	                    	while (members.get(pool.members.get(index)) != null){
 	                    		weightList.add(members.get(pool.members.get(index)).weight);
 	                    	}

@@ -139,6 +139,7 @@ public class MembersResource extends ServerResource {
             } else 
             if (n.equals("weight")) {
             	member.weight = Integer.parseInt(jp.getText());
+            	continue;
             } //else
 //            if (n.equals("dynamic")) {
 //            	member.dynamic = Boolean.parseBoolean(jp.getText());

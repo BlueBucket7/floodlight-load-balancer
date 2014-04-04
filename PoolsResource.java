@@ -148,6 +148,7 @@ public class PoolsResource extends ServerResource {
             }            
             if (n.equals("dynamic")) {
             	pool.dynamic = Boolean.parseBoolean(jp.getText());
+            	continue;
             }
            
             
