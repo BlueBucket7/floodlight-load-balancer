@@ -248,24 +248,47 @@ public class LoadBalancer implements IFloodlightModule,
 	                    	member = members.get(pool.pickMember(client));
 	                    	break;
 	                    } case 2: {
-	                    	//dynamic load balance. Weighted round robin
-	                    	int index = 0;
-	                    	ArrayList<Integer> weightList = new ArrayList<Integer>();
-	                    	if (!pool.members.isEmpty()){
-	                    		System.out.print("Not null!");
+	                    	
+	                    	ArrayList<Integer> weights = new ArrayList<Integer>();
+	                    	
+	                    	//Get weights of the members
+	                    	for (int i=0; i<pool.members.size(); i++) {
+	                    		weights.add(members.get(pool.members.get(i)).weight);
 	                    	}
 	                    	
-	                    	while (members.get(pool.members.get(index)) != null){
-	                    		weightList.add(members.get(pool.members.get(index)).weight);
-	                    	}
-	                    	//Check if the weights are correctly allocated before dynamic LB
-	                    	boolean DL = pool.checkWeightDist(weightList);
+	                    	//Check the weight distribution
+	                    	boolean DL = pool.checkWeightDist(weights);
+	                    	
+	                    	//If pass, proceed to dynamic LB
 	                    	if (DL) {
-	                    		member = members.get(pool.pickMemberDynamically(client, weightList));
+	                    		member = members.get(pool.pickMemberDynamically(client, weights));
 	                    	} else {
-	                    		System.out.print("Invalid member weight distributions. Resorted to static loadbalancing.");
+	                    		System.out.print("Resort to default round robin");
 	                    		member = members.get(pool.pickMember(client));
 	                    	}
+	                    	
+	                    	
+	                    	//NO INDEX 0!!!
+	                    	//member = members.get(pool.pickMemberDynamically(client));
+	                    	
+//	                    	//dynamic load balance. Weighted round robin
+//	                    	int index = 0;
+//	                    	ArrayList<Integer> weightList = new ArrayList<Integer>();
+//	                    	if (!pool.members.isEmpty()){
+//	                    		System.out.print("Not null!");
+//	                    	}
+//	                    	
+//	                    	while (members.get(pool.members.get(index)) != null){
+//	                    		weightList.add(members.get(pool.members.get(index)).weight);
+//	                    	}
+//	                    	//Check if the weights are correctly allocated before dynamic LB
+//	                    	boolean DL = pool.checkWeightDist(weightList);
+//	                    	if (DL) {
+//	                    		member = members.get(pool.pickMemberDynamically(client, weightList));
+//	                    	} else {
+//	                    		System.out.print("Invalid member weight distributions. Resorted to static loadbalancing.");
+//	                    		member = members.get(pool.pickMember(client));
+//	                    	}
 	                    	break;
 	                    } default: {
 	                    	member = members.get(pool.pickMember(client));

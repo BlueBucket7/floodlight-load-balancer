@@ -81,7 +81,9 @@ public class LBPool {
     
     public String pickMemberDynamically(IPClient client, ArrayList<Integer> weights) {
     	
-    	//At this point, its guaranteed that members is bigger than 0 and the total of all member weights in the pool equals to 10.    	
+    	
+    	
+    	//At this point, its guaranteed that members is bigger than 0 and the total of all member weights in the pool equals to 100.    	
     	boolean recall = true;
     	int selection = 0;
     	
@@ -106,7 +108,7 @@ public class LBPool {
     		totalWeight += weights.get(i);
     	}
     	
-    	if (totalWeight == 10)
+    	if (totalWeight == 100)
     		return true;
     	
 		return false;
