@@ -292,6 +292,7 @@ public class LoadBalancer implements IFloodlightModule,
 	                    	break;
 	                    } default: {
 	                    	member = members.get(pool.pickMember(client));
+	                    	break;
 	                    }
                     }
                     
