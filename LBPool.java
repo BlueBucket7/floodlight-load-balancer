@@ -100,6 +100,15 @@ public class LBPool {
     	}   	
     }
     
+//    public String pickCertainServer (IPClient client) {
+//    	
+//    	if (members.size() > 0) {            
+//            return members.get(0);
+//        } else {
+//            return null;
+//        }
+//    }
+    
     public boolean checkWeightDist (ArrayList<Integer> weights) {
     	int totalWeight = 0;
     	for (int i=0; i<weights.size(); i++) {

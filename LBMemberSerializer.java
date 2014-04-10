@@ -32,7 +32,8 @@ public class LBMemberSerializer extends JsonSerializer<LBMember>{
         jGen.writeStartObject();
         
         jGen.writeStringField("id", member.id);
-        jGen.writeStringField("address", String.valueOf(member.address));
+        //jGen.writeStringField("address", String.valueOf(member.address));
+        jGen.writeStringField("address", member.addressStr);
         jGen.writeStringField("port", Short.toString(member.port));
         jGen.writeStringField("poolId", member.poolId);
         jGen.writeStringField("vipId", member.vipId);

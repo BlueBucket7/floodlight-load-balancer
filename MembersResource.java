@@ -115,6 +115,7 @@ public class MembersResource extends ServerResource {
             } else
             if (n.equals("address")) {
                 member.address = IPv4.toIPv4Address(jp.getText());
+                member.addressStr = jp.getText();
                 continue;
             } else
             if (n.equals("port")) {

@@ -241,7 +241,7 @@ public class LoadBalancer implements IFloodlightModule,
                     
            
                     //Case statements for different load balancing options. Default case is round robin
-                    LBMember member;
+                    LBMember member;                     
                     switch (pool.lbMethod) {
 	                    case 1: {
 	                    	//static load balance. Round robin
@@ -265,32 +265,12 @@ public class LoadBalancer implements IFloodlightModule,
 	                    	} else {
 	                    		System.out.print("Resort to default round robin");
 	                    		member = members.get(pool.pickMember(client));
-	                    	}
-	                    	
-	                    	
-	                    	//NO INDEX 0!!!
-	                    	//member = members.get(pool.pickMemberDynamically(client));
-	                    	
-//	                    	//dynamic load balance. Weighted round robin
-//	                    	int index = 0;
-//	                    	ArrayList<Integer> weightList = new ArrayList<Integer>();
-//	                    	if (!pool.members.isEmpty()){
-//	                    		System.out.print("Not null!");
-//	                    	}
-//	                    	
-//	                    	while (members.get(pool.members.get(index)) != null){
-//	                    		weightList.add(members.get(pool.members.get(index)).weight);
-//	                    	}
-//	                    	//Check if the weights are correctly allocated before dynamic LB
-//	                    	boolean DL = pool.checkWeightDist(weightList);
-//	                    	if (DL) {
-//	                    		member = members.get(pool.pickMemberDynamically(client, weightList));
-//	                    	} else {
-//	                    		System.out.print("Invalid member weight distributions. Resorted to static loadbalancing.");
-//	                    		member = members.get(pool.pickMember(client));
-//	                    	}
+	                    	}             	
 	                    	break;
-	                    } default: {
+	                    } //case 3: {
+//	                    	member = members.get(pool.pickCertainServer(client));
+//	                    } 
+	                    default: {
 	                    	member = members.get(pool.pickMember(client));
 	                    	break;
 	                    }

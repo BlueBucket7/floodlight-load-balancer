@@ -29,6 +29,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 public class LBMember {
     protected String id;
     protected int address;
+    protected String addressStr;
     protected short port;
     protected String macString;
     
@@ -46,6 +47,7 @@ public class LBMember {
     public LBMember() {
         id = String.valueOf((int) (Math.random()*10000));
         address = 0;
+        addressStr = null;
         macString = null;
         port = 0;
         
